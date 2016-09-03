@@ -12,4 +12,4 @@
 
 Demo project for: Asp.net MVC changing buttons to text.
 
-http://stackoverflow.com/questions/16035333/how-to-delete-and-recreate-from-scratch-an-existing-ef-code-first-database
+http://stackoverflow.com/questions/39287447/asp-net-mvc-changing-buttons-to-text
