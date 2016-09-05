@@ -18,8 +18,8 @@ namespace SODemo1.Migrations
         protected override void Seed(SODemoContext context)
         {
             context.MyModels.AddOrUpdate(x => x.Id,
-                new MyModel() {Id = 1, Text = "One", Description="Beer"},
-                new MyModel() {Id = 2, Text = "Two", Description = "Wine" },
+                new MyModel() { Id = 1, Text = "One", Description = "Beer" },
+                new MyModel() { Id = 2, Text = "Two", Description = "Wine" },
                 new MyModel() { Id = 3, Text = "Three", Description = "Spirits" },
                 new MyModel() { Id = 4, Text = "Four", Description = "Soft Drinks" }
             );

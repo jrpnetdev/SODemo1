@@ -13,12 +13,12 @@ namespace SODemo1.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201609022100513_InitialCreate"; }
+            get { return "201609040942212_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target
