@@ -15,14 +15,14 @@
             @Html.DisplayNameFor(model => model.Text)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Accepted)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Accepted)
+            
         </th>
         <th></th>
     </tr>
-
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -35,10 +35,17 @@
             @{
                 if (item.Accepted == null)
                 {
-                    @Html.ActionLink("Accept", "Edit", "MyModels", new { id = item.Id, Accepted = true, Text = item.Text, Description = item.Description },
-                    new { @class = "btn btn-success btn-xs" })
-                    @Html.ActionLink("Decline", "Edit", "MyModels", new { id = item.Id, Accepted = false, Text = item.Text, Description = item.Description },
-                    new { @class = "btn btn-danger btn-xs" })
+                    <form action="@Url.Action("AcceptEdit", "MyModels")" method="post" class="action-form">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <input type="hidden" name="Accepted" value="true" />
+                        <button type="submit" class="btn btn-success btn-xs">Accept</button>
+                    </form>
+
+                    <form action="@Url.Action("AcceptEdit", "MyModels")" method="post" class="action-form">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <input type="hidden" name="Accepted" value="false" />
+                        <button type="submit" class="btn btn-danger btn-xs">Decline</button>
+                    </form>
                 }
                 else if (item.Accepted == true)
                 {
@@ -49,8 +56,6 @@
                     <span>Declined</span>
                 }
             }
-
-            
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
@@ -74,18 +79,17 @@
             }
         });
 
-        $('#MyTable td.accepted a').click(function() {
-            var model = @Html.Raw(Json.Encode(Model));
-            $.ajax({
-                url: this.href,
-                type: 'POST',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(model),
-                success: function(result) {
+        $('#MyTable form.action-form').on('submit', function (e) {
+
+            e.preventDefault();
+
+            var model = $(this).serialize();
+            var url = $(this).attr('action');
+
+            $.post(url, model)
+                .done(function (result, status, jqxhr) {
                     window.location.reload(true);
-                }
-            });
-            return false;
+                });
         });
 
     });

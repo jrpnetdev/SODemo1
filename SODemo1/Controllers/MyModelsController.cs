@@ -90,6 +90,25 @@ namespace SODemo1.Controllers
             return View(myModel);
         }
 
+
+        [HttpPost]
+        public ActionResult AcceptEdit(MyModel myModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var entry = _db.MyModels.SingleOrDefault(m => m.Id == myModel.Id);
+                if (entry != null)
+                {
+                    entry.Accepted = myModel.Accepted;
+                    _db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View("Edit", myModel);
+        }
+
         // GET: MyModels/Delete/5
         public ActionResult Delete(int? id)
         {
