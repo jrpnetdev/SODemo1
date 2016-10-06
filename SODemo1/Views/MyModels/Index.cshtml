@@ -35,17 +35,20 @@
             @{
                 if (item.Accepted == null)
                 {
-                    <form action="@Url.Action("AcceptEdit", "MyModels")" method="post" class="action-form">
-                        <input type="hidden" name="Id" value="@item.Id" />
-                        <input type="hidden" name="Accepted" value="true" />
-                        <button type="submit" class="btn btn-success btn-xs">Accept</button>
-                    </form>
-
-                    <form action="@Url.Action("AcceptEdit", "MyModels")" method="post" class="action-form">
-                        <input type="hidden" name="Id" value="@item.Id" />
-                        <input type="hidden" name="Accepted" value="false" />
-                        <button type="submit" class="btn btn-danger btn-xs">Decline</button>
-                    </form>
+                    <div class="spanFormat">
+                        <form action="@Url.Action("AcceptEdit", "MyModels")" method="post" class="action-form">
+                            <input type="hidden" name="Id" value="@item.Id" />
+                            <input type="hidden" name="Accepted" value="true" />
+                            <button type="submit" class="btn btn-success btn-xs">Accept</button>
+                        </form>
+                    </div>
+                    <div class="spanFormat">
+                        <form action="@Url.Action("AcceptEdit", "MyModels")" method="post" class="action-form">
+                            <input type="hidden" name="Id" value="@item.Id" />
+                            <input type="hidden" name="Accepted" value="false" />
+                            <button type="submit" class="btn btn-danger btn-xs">Decline</button>
+                        </form>
+                    </div>
                 }
                 else if (item.Accepted == true)
                 {

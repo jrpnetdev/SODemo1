@@ -24,6 +24,9 @@ textarea {
 }
 
 
-/*td.accepted {
-    display: inline;
-}*/
+.spanFormat {
+  text-align: left;
+  display: table-cell;
+  min-width: 10px;
+  padding-right: 10px;
+}
